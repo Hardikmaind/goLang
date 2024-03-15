@@ -17,8 +17,9 @@ func main() {
 	input, _ := reader.ReadString('\n')
 
 	fmt.Println("Thanks for rating, ", input)
-
+	
 	numRating, err := strconv.ParseFloat(strings.TrimSpace(input), 64)
+	fmt.Println("here i have just printed the numrating",numRating)
 
 	if err != nil {
 		fmt.Println(err)

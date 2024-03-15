@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-const LoginToken string = "ghabbhhjd" // Public
+const LoginToken string = "ghabbhhjd" // Public	this is public variable since the  first letter is capital=> LoginToken
 
 func main() {
 	var username string = "hitesh"

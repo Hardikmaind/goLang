@@ -26,10 +26,13 @@ func main() {
 }
 
 func readFile(filname string) {
-	databyte, err := ioutil.ReadFile(filname)
+	databyte, err := ioutil.ReadFile(filname)		//this is depricated, instead use os.ReadFile or os.Open
+	filecontent, err := os.ReadFile(filname)		//used os.ReadFile 
 	checkNilErr(err)
 
 	fmt.Println("Text data inside the file is \n", string(databyte))
+	fmt.Println("======================")
+	fmt.Println("Text data inside the file is \n", string(filecontent))
 
 }
 

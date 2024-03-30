@@ -13,9 +13,12 @@ func main() {
 
 	fruitList = append(fruitList, "Mango", "Banana")
 	fmt.Println(fruitList)
-
-	fruitList = append(fruitList[:3])
+	fmt.Println("=====================")
+	fruitList = append(fruitList[0:3]) //here 0 is inclusive and 3 is exclusive
 	fmt.Println(fruitList)
+
+	fruitList = append(fruitList[0:]) //here 1 is inclusive and 2 is exclusive
+	fmt.Println(fruitList)            //now since we have already sliced the slice so it will print the same slice and elements in it
 
 	highScores := make([]int, 4)
 
@@ -24,10 +27,12 @@ func main() {
 	highScores[2] = 465
 	highScores[3] = 867
 	//highScores[4] = 777
+	fmt.Println("before appending ", len(highScores))
 
 	highScores = append(highScores, 555, 666, 321)
 
 	fmt.Println(highScores)
+	fmt.Println("this is the length of the slice highscores ",len(highScores))
 
 	//fmt.Println(sort.IntsAreSorted(highScores))
 	sort.Ints(highScores)

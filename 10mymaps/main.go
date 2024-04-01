@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	fmt.Println("Maps in golang")
 
-	languages := make(map[string]string)
+	languages := make(map[string]string)			//map[keyType]valueType
 
 	languages["JS"] = "Javascript"
 	languages["RB"] = "Ruby"

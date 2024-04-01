@@ -7,8 +7,8 @@ func main() {
 	// no inheritance in golang; No super or parent
 
 	hitesh := User{"Hitesh", "hitesh@go.dev", true, 16}
-	fmt.Println(hitesh)
-	fmt.Printf("hitesh details are: %+v\n", hitesh)
+	fmt.Println(hitesh)			//this is without %+v
+	fmt.Printf("hitesh details are: %+v\n", hitesh)		//this is with %+v
 	fmt.Printf("Name is %v and email is %v.", hitesh.Name, hitesh.Email)
 
 }

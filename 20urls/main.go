@@ -14,12 +14,13 @@ func main() {
 	//parsing
 	result, _ := url.Parse(myurl) //we need to parse the url to get the parts of the url
 
-	// fmt.Println(result.Scheme)
-	// fmt.Println(result.Host)
-	// fmt.Println(result.Path)
-	// fmt.Println(result.Port())
-	fmt.Println(result.RawQuery)
-
+	fmt.Println("==================================================================")
+	fmt.Println(result.Scheme)
+	fmt.Println(result.Host)
+	fmt.Println(result.Path)
+	fmt.Println(result.Port()) 
+	fmt.Println(result.RawQuery)			//same as in javascript it is knows as params or parameters	
+	fmt.Println("==================================================================")
 	// this beliw is the ouput of the above code
 
 	// 	https
@@ -27,13 +28,17 @@ func main() {
 	// /learn
 	// 3000
 
-	qparams := result.Query()
+	qparams := result.Query()		//.Quert() just stores the query parameters in the form of key value pair. from this we can get the values of the query parameters
 	fmt.Printf("The type of query params are: %T\n", qparams)
 
 	fmt.Println(qparams["coursename"])
-
+ 
 	for _, val := range qparams {
-		fmt.Println("Param is: ", val)
+		fmt.Println("value or  Param is: ", val)
+	}
+
+	for key, _ := range qparams {
+		fmt.Println("key  is: ", key)
 	}
 
 
@@ -47,8 +52,8 @@ func main() {
 		RawPath: "user=hitesh",
 	}
 	fmt.Print("this is the url=>  ",partsOfUrl,"\n")
-	fmt.Printf("type of partsOfUrl is: %T",partsOfUrl)
-	anotherURL := partsOfUrl.String()
-	fmt.Println(anotherURL)
+	fmt.Println("type of partsOfUrl is: %T",partsOfUrl)
+	anotherURL := partsOfUrl.String()		// we can also it in this way ==>> anotherURL := String(partsOfUrl 	)
+	fmt.Println("this is  url but in string ",anotherURL)
 
 }

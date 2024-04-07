@@ -4,7 +4,7 @@
   "description": "a web server for golang series",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "webserver",

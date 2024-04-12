@@ -6,16 +6,17 @@ import (
 )
 
 type course struct {
-	Name     string `json:"coursename"`
+	Name     string `json:"coursename"`		//this is used to change the key name in the json data
 	Price    int
-	Platform string   `json:"website"`
-	Password string   `json:"-"`
-	Tags     []string `json:"tags,omitempty"`
+	Platform string   `json:"website"`		//this is used to change the key name in the json data
+	Password string   `json:"-"`			//this is used to not show the password key in the json data
+	Tags     []string `json:"tags,omitempty"`			//this is used to not show the tags key if it is nil
 }
 
 func main() {
 	fmt.Println("Welcome to JSON video")
-	// EncodeJson()
+	EncodeJson()
+	fmt.Println("==========================================================================")
 	DecodeJson()
 }
 
@@ -29,7 +30,9 @@ func EncodeJson() {
 
 	//package this data as JSON data
 
-	finalJson, err := json.MarshalIndent(lcoCourses, "", "\t")
+	// finalJson, err := json.MarshalIndent(lcoCourses, "", "\t")
+	// finalJson, err := json.Marshal(lcoCourses)			//this is just the normal json data
+	finalJson, err := json.MarshalIndent(lcoCourses, "", "  ")				//here the third argument is the spacing in the indecntation 
 	if err != nil {
 		panic(err)
 	}
@@ -53,7 +56,8 @@ func DecodeJson() {
 
 	if checkValid {
 		fmt.Println("JSON was valid")
-		json.Unmarshal(jsonDataFromWeb, &lcoCourse)
+		json.Unmarshal(jsonDataFromWeb, &lcoCourse)			//func json.Unmarshal(data []byte, v any) error
+		// Unmarshal parses the JSON-encoded data and stores the result in the value pointed to by v. If v is nil or not a pointer, Unmarshal returns an [InvalidUnmarshalError]
 		fmt.Printf("%#v\n", lcoCourse)
 	} else {
 		fmt.Println("JSON WAS NOT VALID")

@@ -12,3 +12,76 @@ In your code:
 - `var ptr2 *int = &myNumber` declares a pointer `ptr2` to an integer and initializes it with the address of `myNumber`.
 
 You can access the value that a pointer points to using the `*` operator. For example, `*ptr` gives you the value of `myNumber`. You can also modify the value that a pointer points to. For example, `*ptr = *ptr + 2` increments the value of `myNumber` by 2.
+
+
+======================================================================================================================
+
+&=> if &num => this mean address of num
+*=> if *num => this mean value of num. here we are dereferncing the pointer to get the value stored at those addresses
+
+
+func swapNumbers(num1 *int, num2 *int) {  
+    
+     //  num1 *int and num2 *int: These are the parameters of the function.They are pointers to integers, which means they store the memory addresses of integer variables.
+
+
+    *num1, *num2 = *num2, *num1
+}
+
+//so basiclly in the above function  (num1 * int,num2 *int) these are the pointer and they store the mem locaiton. and *num1 and *num2 these are the same pointer given in the parameter and ..here we are deferencing them to get the actual value stored at that address and those actual values are getting swapped => like *num1 and *num2 are the actual value(since we have dereference the pointer num1 and num2 to get actual values) 
+
+func main(){
+    num1:=5
+    num2:=7
+    swapNumbers(&num1, &num2)           //here address of num1 and num2 are passed
+
+}
+
+Question:========>>
+so actually what we are swapping...pointer ? or memory locaion? or numbers itself
+
+Answer:=======>>>
+In Go, when you swap variables using pointers, you are swapping the values they point to, not the pointers themselves or their memory locations. Let's break it down:
+
+Memory Locations: The memory locations (addresses) of num1 and num2 are passed to the swapNumbers function. These memory locations are used as pointers (*int) in the function parameters.
+
+Pointers: Inside the swapNumbers function, num1 and num2 are pointers to integers (*int). These pointers hold the memory addresses of the original variables num1 and num2.
+
+Values: By using the * operator inside the function (*num1 and *num2), you access the actual values stored at the memory addresses pointed to by num1 and num2. These values are then swapped using a simple assignment operation.
+
+So, when you call swapNumbers(&num1, &num2):
+
+You pass the memory locations of num1 and num2 (pointers) to the function.
+Inside the function, you access the values at those memory locations using pointers (*num1 and *num2).
+The values themselves are swapped, not the pointers or their memory locations.
+This approach is a way to indirectly modify variables in Go by passing their addresses to functions, especially useful for functions that need to modify multiple variables or where returning multiple values is cumbersome.
+
+
+
+
+
+
+
+
+
+================================================================================
+func swapAddresses(addr1 *int, addr2 *int) {
+    addr1, addr2 = addr2, addr1                     //like you can see here we are swapping the addresss
+}
+func main(){
+    num1:=1
+    num2:=12312
+    swapAddresses(&num1,&num2)
+}
+
+
+Swapping pointers and swapping memory addresses are related concepts, but they are not exactly the same thing.
+
+Swapping Pointers:
+
+When we talk about swapping pointers, we mean changing which memory address a pointer is pointing to. For example, if ptr1 initially points to memory address 0x1000 and ptr2 initially points to 0x2000, swapping the pointers would mean ptr1 now points to 0x2000 and ptr2 points to 0x1000.
+This operation changes the variables that the pointers are pointing to but doesn't change the values at those addresses directly.
+Swapping Memory Addresses:
+
+Swapping memory addresses would mean changing the actual location in memory where a variable is stored. This is a low-level operation and is not typically done explicitly in higher-level languages like Go.
+In Go, variables are stored in memory, and pointers store the memory addresses of those variables. Swapping memory addresses would involve moving the variables themselves in memory, which is not a common operation in typical programming scenarios.

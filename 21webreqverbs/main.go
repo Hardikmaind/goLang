@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"io"
 )
 
 func main() {
@@ -16,7 +17,7 @@ func main() {
 }
 
 func PerformGetRequest() {
-	const myurl = "http://localhost:8000/get"
+	const myurl = "http://localhost:3000/get/"
 
 	response, err := http.Get(myurl)
 	if err != nil {
@@ -29,7 +30,7 @@ func PerformGetRequest() {
 	fmt.Println("Content length is: ", response.ContentLength)
 
 	var responseString strings.Builder
-	content, _ := ioutil.ReadAll(response.Body)
+	content, _ := io.ReadAll(response.Body)
 	byteCount, _ := responseString.Write(content)
 
 	fmt.Println("ByteCount is: ", byteCount)
@@ -65,14 +66,14 @@ func PerformPostJsonRequest() {
 }
 
 func PerformPostFormRequest() {
-	const myurl = "http://localhost:8000/postform"
+	const myurl = "http://localhost:3000/postform"
 
 	//formdata
 
 	data := url.Values{}
-	data.Add("firstname", "hitesh")
-	data.Add("lastname", "choudhary")
-	data.Add("email", "hitesh@go.dev")
+	data.Add("firstname", "HARDIK")
+	data.Add("lastname", "MAIND")
+	data.Add("email", "maindhardik@gmail.com")
 
 	response, err := http.PostForm(myurl, data)
 	if err != nil {

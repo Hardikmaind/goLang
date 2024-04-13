@@ -45,7 +45,7 @@ func main() {
 	}() // Immediately invoke the anonymous function
 
 	// You can also use variables inside the IIFE-like function
-	message := "Hello from IIFE-like function"
+	message := "Hello from IIFE-like function with parameter"
 	func(msg string) {
 		fmt.Println(msg)
 	}(message) // Pass and immediately invoke the anonymous function with the message

@@ -10,6 +10,7 @@ import (
 )
 
 func uploadFile(w http.ResponseWriter, r *http.Request) {
+	log.Printf("Received uploadFile API call: %s %s", r.Method, r.URL.Path)
 	// Parse the multipart form data
 	err := r.ParseMultipartForm(10 << 20) // 10 MB limit
 	if err != nil {

@@ -1,0 +1,111 @@
+#1. "go mod tidy" => to install This command will analyze your project's dependencies based on the go.mod file and install any missing dependencies or remove any unused dependencies. It's a good practice to run "go mod tidy" after modifying your go.mod file or after adding new dependencies to your project.
+
+
+
+
+
+
+
+
+
+
+#2. If you want to explicitly download the dependencies listed in your go.mod file without removing any unused dependencies, you can use the go mod download command:
+
+"go mod download"
+
+
+
+
+
+
+
+
+
+
+
+
+#3. The go get -u all command in Go is used to update all dependencies to their latest versions. Here's what each part of the command does:
+
+go get: This is the command used to fetch and install packages from remote repositories. It's commonly used to download dependencies for a Go project.
+
+-u: This flag stands for "update". When used with go get, it instructs Go to update the specified packages to their latest versions.
+
+all: This keyword tells Go to update all dependencies of the current project to their latest versions. It essentially updates the entire dependency tree of your project.
+
+This command will go through all the dependencies listed in your go.mod file and update them to their latest compatible versions, including any indirect dependencies.
+
+"go get -u all"
+
+
+
+
+
+
+
+
+
+
+
+#4 go mod init github.com/Hardikmaind/hello_go
+
+
+The go mod init command is used to initialize a new Go module in your project. When you run go mod init github.com/Hardikmaind/hello_go, you're telling Go to create a new module with the module path set to github.com/Hardikmaind/hello_go.
+
+Here's what each part of the command does:
+
+go mod init: This is the command used to initialize a new Go module in your project. It creates a go.mod file in the root of your project directory.
+
+github.com/Hardikmaind/hello_go: This is the module path that you're assigning to your Go module. It typically follows the format of domain.com/username/projectname.
+
+When you initialize a Go module using go mod init, the go.mod file is created to manage your project's dependencies. It contains information about your project's module path, dependencies, and their versions. This file helps Go to resolve and download the correct dependencies for your project.
+
+After initializing a Go module, you can use other go mod commands such as go get, go build, go run, etc., to work with dependencies and manage your project's module dependencies more effectively.
+
+
+
+
+
+
+
+
+
+
+
+#5 "go get"
+
+The go get command in Go is primarily used to download and install packages from remote repositories into your Go workspace. It is one of the fundamental tools for managing dependencies in Go projects.
+Here's what go get can do:
+
+Install packages: If you provide a package path to go get, it will download the package's source code and any necessary dependencies, compile them, and install the compiled binaries (if applicable) into your Go workspace. For example:
+
+
+"go get github.com/example/package"
+Update packages: When used with the -u flag (go get -u), it updates the specified packages to their latest versions. For example:
+
+
+"go get -u github.com/example/package"
+Install executables: If the package you are fetching contains executable commands (like CLI tools), go get will build and install these executables into your bin directory. This allows you to run the installed commands directly from your terminal.
+
+Install dependencies for a package: If your Go project requires a package that is not already installed, you can use go get to fetch and install that package along with its dependencies.
+
+Keep in mind that go get operates in the context of your Go workspace and uses the GOPATH environment variable to determine where to install packages. However, with Go modules (introduced in Go 1.11), the usage of go get has evolved. When working with modules, go get can also be used to add dependencies to your module's go.mod file, but it no longer requires GOPATH.
+
+For example, with modules:
+
+"go get github.com/example/package@version"
+This command adds github.com/example/package at the specified version to your module's dependencies.
+
+Overall, go get is a versatile tool for managing Go packages and dependencies, although its behavior can vary slightly depending on whether you are working with traditional GOPATH-based projects or newer module-aware projects.
+
+
+
+
+
+
+
+
+
+
+
+
+

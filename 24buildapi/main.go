@@ -62,6 +62,7 @@ func serveHome(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("<h1>Welcome to API by LearnCodeOnline</h1>"))
 }
 
+// here encodiung mean that we are converting courses into JSON and decoding means we are converting JSON into courses i.e in the form of struct
 func getAllCourses(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Get all courses")
 	w.Header().Set("Content-Type", "applicatioan/json")
@@ -76,6 +77,10 @@ func getOneCourse(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 
 	// loop through courses, find matching id and return the response
+
+
+	
+// In Go, when you use a for loop with the range keyword, it returns two values on each iteration: the index (position) of the current element, and a copy of the element itself. However, if you're not interested in the index and only want the element, you can use the blank identifier _ to ignore the index.
 	for _, course := range courses {
 		if course.CourseId == params["id"] {
 			json.NewEncoder(w).Encode(course)
@@ -110,8 +115,13 @@ func createOneCourse(w http.ResponseWriter, r *http.Request) {
 	// generate unique id, string
 	// append course into courses
 
-	rand.Seed(time.Now().UnixNano())
-	course.CourseId = strconv.Itoa(rand.Intn(100))
+
+	// this beliw line is deprecated
+	// rand.Seed(time.Now().UnixNano())
+	// course.CourseId = strconv.Itoa(rand.Intn(100))
+
+	random := rand.New(rand.NewSource(time.Now().UnixNano()))
+	course.CourseId = strconv.Itoa(random.Intn(100))
 	courses = append(courses, course)
 	json.NewEncoder(w).Encode(course)
 	return
@@ -139,6 +149,7 @@ func updateOneCourse(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	//TODO: send a response when id is not found
+	
 }
 
 func deleteOneCourse(w http.ResponseWriter, r *http.Request) {

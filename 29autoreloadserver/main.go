@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"time"
+	
 )
 
 func uploadFile(w http.ResponseWriter, r *http.Request) {
@@ -25,7 +26,7 @@ func uploadFile(w http.ResponseWriter, r *http.Request) {
 	defer file.Close()
 
 	// Create a new file on the server
-	dst, err := os.Create("../fileupload_go/uploaded_files" + handler.Filename)
+	dst, err := os.Create("../29autoreloadserver/" + handler.Filename)
 	if err != nil {
 		http.Error(w, "Unable to create file on server", http.StatusInternalServerError)
 		return
@@ -41,7 +42,7 @@ func uploadFile(w http.ResponseWriter, r *http.Request) {
 
 	// Send a success response to the client
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("File uploaded successfully"))
+	w.Write([]byte("File uploaded successfully adi"))
 }
 
 func main() {
@@ -55,4 +56,13 @@ func main() {
 	// Start the HTTP server on port 8080
 	fmt.Println("Server started on port 8080")
 	http.ListenAndServe(":8080", nil)
+
+
+
+
+
+
+	// install the air with the help of go intall {air repo}
+	//then do air init ...this will create the .air.toml file
+	// then to start the server simple press air=========>>>>server will simply start with auto reloading
 }

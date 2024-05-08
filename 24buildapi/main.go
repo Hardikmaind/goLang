@@ -103,7 +103,7 @@ func createOneCourse(w http.ResponseWriter, r *http.Request) {
 	// what about - {}
 
 	var course Course
-	_ = json.NewDecoder(r.Body).Decode(&course)
+	_ = json.NewDecoder(r.Body).Decode(&course)			// here the NewDecoder is used to decode the JSON data  of r.Body and  Decode is used to convert the JSON data into the struct of course. here we are using the reference of course because we want to change the value of course struct.
 	if course.IsEmpty() {
 		json.NewEncoder(w).Encode("No data inside JSON")
 		return

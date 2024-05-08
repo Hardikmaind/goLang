@@ -43,6 +43,24 @@ func main() {
 	swapWithoutpointer(x, y)
 	fmt.Println("Value of x after swap is ", x)
 	fmt.Println("Value of y after swap is ", y)
+
+
+	fmt.Println("=============================================")
+
+	 // Initialize two numbers
+	 num1 := 10
+	 num2 := 20
+ 
+	 fmt.Println("Before swapping:")
+	 fmt.Println("num1 =", num1)
+	 fmt.Println("num2 =", num2)
+ 
+	 // Swap numbers using reference
+	 num1, num2 = swapByReference(num1, num2)
+ 
+	 fmt.Println("After swapping:")
+	 fmt.Println("num1 =", num1)
+	 fmt.Println("num2 =", num2)
 }
 
 func modifyValue(ptr *int) {
@@ -61,6 +79,21 @@ func swapWithoutpointer(x int, y int) {
 	x = y
 	y = temp
 
+}
+
+
+
+
+// now solve it using reference
+
+// ChatGPT
+// In Go, you don't explicitly use references like you would in languages such as C++. Go handles references implicitly when passing variables to functions. Here's how you can swap two numbers using this approach:
+
+// In this code, swapByReference function takes two integers as arguments and returns them in reverse order, effectively swapping them. In the main function, we call swapByReference with the two numbers to swap their values and print the result. The concept of passing by reference in Go is implicit through the use of function parameters, unlike explicit references as seen in languages like C++.
+
+
+func swapByReference(a, b int) (int, int) {
+    return b, a
 }
 
 

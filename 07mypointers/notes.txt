@@ -71,7 +71,7 @@ func swapAddresses(addr1 *int, addr2 *int) {
 func main(){
     num1:=1
     num2:=12312
-    swapAddresses(&num1,&num2)
+    swapAddresses(&num1,&num2)  
 }
 
 

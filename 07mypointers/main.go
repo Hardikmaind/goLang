@@ -2,6 +2,12 @@ package main
 
 import "fmt"
 
+
+type man struct {
+    Name string
+    Age  int
+}
+
 func main() {
 	fmt.Println("Welcome to a class on pointers")
 
@@ -61,6 +67,28 @@ func main() {
 	 fmt.Println("After swapping:")
 	 fmt.Println("num1 =", num1)
 	 fmt.Println("num2 =", num2)
+
+
+
+
+
+
+
+	 fmt.Println("=============================printing the struct===========================")
+
+
+
+	 var ptrToStruct *man // Declare a pointer to a man struct
+
+	 
+	//  person is a variable of type man (struct type) that is being declared and initialized in a single step using a struct literal. Here's a breakdown of what each part means:
+
+	 person := man{Name: "Hardik", Age: 25}    //here we are creating a struct and assigning values to it.but man is a pointer to struct then how we are assigning values to it? 
+	 											//Answer=> we are not assigning values. we are just creating a struct and assigning values to it. 
+	 ptrToStruct = &person // Assign the address of the person struct to hardik
+ 
+	 fmt.Println("Name:", ptrToStruct.Name)
+	 fmt.Println("Age:", ptrToStruct.Age)
 }
 
 func modifyValue(ptr *int) {

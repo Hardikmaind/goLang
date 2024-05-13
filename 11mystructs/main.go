@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"mystructs/reference"
+)
 
 //CONCEPT OF POINTER IS DIFFERENT IN GO AS COMPARED TO C++.!!!!!!!!!!
 //CONCEPT OF POINTER IS DIFFERENT IN GO AS COMPARED TO C++.!!!!!!!!!!
@@ -24,8 +27,17 @@ func main() {
 
 	fmt.Println("User2 gender is: ", user.getGender())
 	fmt.Println("User2 adderess is: ", user.getAddress())
-	user.updateAddress("Pune")		//here go automatically dereferences the pointer which in this case is user and then accesses the address field of the User2 struct
+	user.updateAddress("Pune") //here go automatically dereferences the pointer which in this case is user and then accesses the address field of the User2 struct
+	
+	// Since the updateAddress method has a receiver of type *User2 (a pointer to User2), Go automatically dereferences the pointer when you call the method on a User2 instance. This means that even though user is not a pointer itself, Go treats it as if it were a pointer and automatically dereferences it when calling the method.
+
+	// Inside the updateAddress method, u is a pointer to the User2 struct. When you write u.address = address, Go automatically dereferences the u pointer and accesses the address field of the underlying User2 struct directly, without you needing to use *u.address to explicitly dereference it.
+
+	// This behavior is specific to Go and differs from languages like C++ where you would need to use -> to access members of a struct through a pointer. In Go, method calls on struct pointers are automatically handled as if you're working with the struct directly.
+
 	fmt.Println("User2 this is the updated adderess is: ", user.getAddress())
+
+	reference.Demo()
 
 }
 
@@ -43,14 +55,13 @@ type User2 struct {
 	gender  string
 }
 
-func (u User2) getGender() string {			//now here the whole struct is passed as a value means that the struct is copied and passed to the function
+func (u User2) getGender() string { //now here the whole struct is passed as a value means that the struct is copied and passed to the function
 	return u.Name
 }
 
-func (u *User2) getAddress() string {		//now here the whole struct is passed as a pointer means that the address of the struct is passed to the function
+func (u *User2) getAddress() string { //now here the whole struct is passed as a pointer means that the address of the struct is passed to the function
 	return u.address
 }
-
 
 // In Go, when you use a pointer receiver in a method, you don't explicitly dereference the pointer within the method body because Go automatically handles that for you. When you call a method on a pointer receiver, Go automatically dereferences the pointer and accesses the underlying struct.
 
@@ -58,10 +69,9 @@ func (u *User2) getAddress() string {		//now here the whole struct is passed as 
 
 // So, when you write u.address = address inside the updateAddress method, Go automatically dereferences u and accesses the address field of the User2 struct. This behavior simplifies the code and makes it more readable without the need for explicit dereferencing.
 
-func (u *User2)updateAddress(address string){
-	u.address = address		//here no need to use *u.address because the struct is passed as a pointer and the address is accessed directly. go automatically dereferences the pointer and accesses the underlying struct. this is not cpp see cpp code below to swap numbers
+func (u *User2) updateAddress(address string) {
+	u.address = address //here no need to use *u.address because the struct is passed as a pointer and the address is accessed directly. go automatically dereferences the pointer and accesses the underlying struct. this is not cpp see cpp code below to swap numbers
 }
-
 
 // unlike in cpp
 // #include <iostream>

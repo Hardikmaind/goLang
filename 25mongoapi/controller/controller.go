@@ -16,11 +16,11 @@ import (
 )
 
 // const connectionString = "mongodb+srv://learncodeonline:hitesh@cluster0.humov.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-const connectionString = "mongodb://sasukeuchiha46383:<password>@undefined/?replicaSet=atlas-nbqvk9-shard-0&ssl=true&authSource=admin"
+const connectionString = "mongodb+srv://sasukeuchiha46383:sasukeuchiha46383@cluster0.rwjxvct.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 const dbName = "netflix"
 const colName = "watchlist"
 
-//MOST IMPORTANT
+// MOST IMPORTANT
 var collection *mongo.Collection
 
 // connect with monogoDB
